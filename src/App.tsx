@@ -1,6 +1,6 @@
 import './App.css'
 import React, { useState } from 'react';
-import axios, { AxiosResponse} from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import Form from './Form.tsx';
 
 
