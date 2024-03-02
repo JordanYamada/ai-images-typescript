@@ -18,17 +18,17 @@ const App: React.FC = () => {
   const [requestParams, setRequestParams] = useState<FormData>({ method: '', description: '', title: '' });
 
 
-  const aiImage = async (formData:FormData) => {
+  const aiImage = async (formData: FormData) => {
     try {
-      const url:string = "http://localhost:3001/api/v1/dallE";
+      const url: string = "http://localhost:3001/api/v1/dallE";
       const { title, description } = formData;
       const response: AxiosResponse = await axios.post(url, {
-          title,
-          description
-        })
-  
-      const image:string = response.data.url;
-      const prompt:string = response.data.description;
+        title,
+        description
+      })
+
+      const image: string = response.data.url;
+      const prompt: string = response.data.description;
       // console.log('Response: ', response.data)
       // console.log('MY image:',image);
       // console.log('MY prompt:',prompt);
@@ -39,8 +39,8 @@ const App: React.FC = () => {
     }
   }
 
-  const callApi = (formData:FormData) => {
-    
+  const callApi = (formData: FormData) => {
+
     setRequestParams(formData);
     aiImage(formData);
   }
@@ -48,13 +48,20 @@ const App: React.FC = () => {
   return (
     <React.Fragment>
       {/* <Header /> */}
-      <div>Title: {requestParams.title}</div>
-      <div>Description: {prompt}</div>
-      
-<div>
-      <img src={image}/>
+      {image
+        ?
+        <div>Title: {requestParams.title}</div>
+        :
+        <h2>Welcome</h2>}
+      {image
+        ?
+        <div>Description: {prompt}</div>
+        :
+        null}
+      <div>
+        {image ? <img src={image} /> : <h2>Try It Out!</h2>}
       </div>
-      <Form callApi={callApi} 
+      <Form callApi={callApi}
       />
       {/* <Footer /> */}
     </React.Fragment>
