@@ -2,6 +2,7 @@ import './App.css'
 import React, { useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import Form from './Form.tsx';
+import SaveButton from './SaveButton.tsx';
 
 
 interface FormData {
@@ -14,6 +15,7 @@ interface FormData {
 const App: React.FC = () => {
 
   const [image, setImage] = useState<string>("");
+  const [savedImages, setSavedImages] = useState<Array<string>>([]);
   const [prompt, setPrompt] = useState<string>("");
   const [requestParams, setRequestParams] = useState<FormData>({ method: '', description: '', title: '' });
 
@@ -33,10 +35,15 @@ const App: React.FC = () => {
       // console.log('MY image:',image);
       // console.log('MY prompt:',prompt);
       setImage(image);
-      setPrompt(prompt)
+      setPrompt(prompt);
     } catch (error) {
       console.log("Error:", error);
     }
+  }
+
+  const saveImage = (url:string) => {
+    setSavedImages([...savedImages, url]);
+    url !== image ? setImage(url) : alert("You've already saved this image.");
   }
 
   const callApi = (formData: FormData) => {
@@ -60,7 +67,16 @@ const App: React.FC = () => {
         null}
       <div>
         {image ? <img src={image} /> : <h2>Try It Out!</h2>}
+        {image
+          ?
+          <SaveButton
+            image={image}
+            saveImage={saveImage}
+          />
+          :
+          null}
       </div>
+
       <Form callApi={callApi}
       />
       {/* <Footer /> */}
