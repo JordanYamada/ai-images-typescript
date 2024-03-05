@@ -24,11 +24,13 @@ const SaveButton:React.FC<SaveButtonProps>=(props)=>{
 
 
       // Convert the response data into a Blob
-      const blob = new Blob([response.data], { type: 'image/png' });
-      console.log('!!!!!!!!!!!!!!!blob:', blob)
+      // const blob = new Blob([response.data], { type: 'image/png' });
+      // console.log('!!!!!!!!!!!!!!!blob:', blob)
       
       // Create a URL representing the Blob
-      const imageUrl = URL.createObjectURL(blob);
+      // const imageUrl = URL.createObjectURL(blob);
+
+      const imageUrl = response.data.url;
 
       console.log('!!!!!!!!!!!!!!!!ImageUrl: ',imageUrl);
       // Call the saveImage function with the converted image URL
