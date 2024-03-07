@@ -23,34 +23,36 @@ const ImageCarousel = () => {
       const response: AxiosResponse = await axios.get(url);
       const data = response.data;
       console.log(data)
-      data.map((entry: ImagesData)=>{
-        console.log(entry)
-        handleImageSet(entry)
-        console.log('fillCarousel: ',images)
-      })
-      // setImages([...images, data])
+      // const carousel: ImagesData[] = []; 
+      // data.map((entry: ImagesData)=>{
+      //   console.log(entry)
+      //   // handleImageSet(entry)
+      //   // setImages([...images, entry])
+      //   carousel.push(entry)
+      //   console.log('fillCarousel: ',images)
+      // })
+      setImages(data)
 
     } catch (error) {
       console.error('Error Storing to the Database:', error);
     }
   };
 
-  const handleImageSet = (entry:ImagesData) => {
-    setImages([...images, entry])
-  }
+  // const handleImageSet = (entry:ImagesData) => {
+  //   setImages([...images, entry])
+  // }
 
   console.log('After-Carousel: ',images)
 
 
-  const imagesCollection = images.map( image => {
+  const imagesCollection = images.map( image => (
 
 
-    console.log('Single Image!!!:',image)
+    // console.log('Single Image!!!:',image)
     // render a <Carousel.Item> for each image in the images array
-    return (
       <Carousel.Item key={image._id}>
         <img
-          className="d-block w-100 img-fluid"
+          className="carouselImage d-block img-fluid"
           src={image.image}
           alt={image.description}
         />
@@ -58,14 +60,9 @@ const ImageCarousel = () => {
         <Carousel.Caption >
           <h3>{image.title}</h3>
           <p>{image.description}</p>
-
         </Carousel.Caption>
-
-
-
       </Carousel.Item>
-    )
-  });
+  ));
 
 
   return (
