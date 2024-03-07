@@ -40,6 +40,7 @@ const App: React.FC = () => {
   const contextObject = {
     images,
     deleteImage,
+    getImages,
 }
 
 return (

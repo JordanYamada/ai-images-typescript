@@ -15,18 +15,24 @@ interface ImagesData {
 interface OutletContext {
   images: ImagesData[];
   deleteImage: (url: string, id: string) => void;
+  getImages: () => void;
 }
 
 const ImageCollection = () => {
   // Use the defined type for context value
-  const { images, deleteImage }: OutletContext = useOutletContext() as OutletContext;
+  const { images, deleteImage, getImages }: OutletContext = useOutletContext() as OutletContext;
 
+  const handleDeleteImage = (url:string, id:string) => {
+    deleteImage(url, id)
+    getImages();
+  }
 
+  // const url: string = "http://localhost:3001/api/v1/images/";
   console.log('After-Carousel: ', images)
 
 
   const imagesCollection = images.map(image => {
-    const url: string = "http://localhost:3001/api/v1/images";
+    const url: string = "http://localhost:3001/api/v1/images/";
     return(
     
     // console.log('Single Image!!!:',image)
@@ -43,8 +49,7 @@ const ImageCollection = () => {
        </Card.Text>
        <Button
               variant="dark"
-              onClick={() => deleteImage(url, image._id)}
-
+              onClick={() => handleDeleteImage(url, image._id)}
             >
               Delete Image
             </Button>

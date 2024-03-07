@@ -5,6 +5,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 const Header: React.FC = () => {
   return (
+    <>
+    <h1>Playing with Dall-E</h1>
     <Navbar bg="light" expand="lg">
       <Container fluid>
         <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
@@ -32,6 +34,7 @@ const Header: React.FC = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </>
   )
 }
 

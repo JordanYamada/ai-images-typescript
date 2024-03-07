@@ -1,4 +1,5 @@
 import React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import axios, { AxiosResponse } from 'axios';
 import { Button } from 'react-bootstrap';
 
@@ -9,11 +10,20 @@ interface SaveButtonProps {
   description: string;
 }
 
+// Define the type of the context value returned by useOutletContext
+interface OutletContext {
+  images: ImagesData[];
+  deleteImage: (url: string, id: string) => void;
+  getImages: () => void;
+}
+
+
 
 
 
 const SaveButton: React.FC<SaveButtonProps> = (props) => {
 
+  const { getImages }: OutletContext = useOutletContext() as OutletContext;
 
   const handleConvert = async () => {
     console.log(props.title)
@@ -28,6 +38,7 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
       props.saveImage(imageUrl);
       console.log(props.title)
       addToCarousel(imageUrl)
+      getImages();
 
     } catch (error) {
       console.error('Error converting image:', error);
