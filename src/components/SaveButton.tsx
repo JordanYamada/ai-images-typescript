@@ -12,7 +12,6 @@ interface SaveButtonProps {
 
 // Define the type of the context value returned by useOutletContext
 interface OutletContext {
-  images: ImagesData[];
   deleteImage: (url: string, id: string) => void;
   getImages: () => void;
 }
