@@ -33,6 +33,19 @@
   }
 }
 
+
+/* .carousel-inner {
+    font-display: none;
+} */
+
+/* .carouselCaption{
+  display: none;
+} */
+
+/* .carouselCaption:hover{
+  display: none;
+} */
+
 .carouselImage {
   width: 60rem;
 }

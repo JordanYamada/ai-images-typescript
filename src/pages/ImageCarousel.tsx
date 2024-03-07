@@ -42,26 +42,24 @@ const ImageCarousel = () => {
   //   setImages([...images, entry])
   // }
 
-  console.log('After-Carousel: ',images)
+  console.log('After-Carousel: ', images)
 
 
-  const imagesCollection = images.map( image => (
-
-
+  const imagesCollection = images.map(image => (
     // console.log('Single Image!!!:',image)
     // render a <Carousel.Item> for each image in the images array
-      <Carousel.Item key={image._id}>
-        <img
-          className="carouselImage d-block img-fluid"
-          src={image.image}
-          alt={image.description}
-        />
+    <Carousel.Item key={image._id}>
+      <img
+        className="carouselImage d-block img-fluid"
+        src={image.image}
+        alt={image.description}
+      />
 
-        <Carousel.Caption >
-          <h3>{image.title}</h3>
-          <p>{image.description}</p>
-        </Carousel.Caption>
-      </Carousel.Item>
+      <Carousel.Caption className="carouselCaption">
+        <h3>{image.title}</h3>
+        <p>{image.description}</p>
+      </Carousel.Caption>
+    </Carousel.Item>
   ));
 
 

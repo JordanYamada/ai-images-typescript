@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
-import Form from './Form.tsx';
-import SaveButton from './SaveButton.tsx';
+import Form from '../components/Form.tsx';
+import SaveButton from '../components/SaveButton.tsx';
 // import Header from './Header.tsx';
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 

@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import App from "./App";
-import Home from "./Home";
-import ImageCarousel from "./ImageCarousel";
+import Home from "../pages/Home";
+import ImageCarousel from "../pages/ImageCarousel";
 // import ErrorPage from "./pages/ErrorPage";
 
 const routes: RouteObject[] = [
