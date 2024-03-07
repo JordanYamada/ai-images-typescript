@@ -23,6 +23,10 @@ const Header: React.FC = () => {
               <Nav.Link href="/carousel">Carousel</Nav.Link>
             </LinkContainer>
 
+            <LinkContainer to="/collection">
+              <Nav.Link href="/collection">Collection</Nav.Link>
+            </LinkContainer>
+
 
           </Nav>
         </Navbar.Collapse>

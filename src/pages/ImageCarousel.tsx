@@ -1,5 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
-import { useState, useEffect } from "react"
+import { useOutletContext } from "react-router-dom";
 import Carousel from 'react-bootstrap/Carousel';
 
 interface ImagesData {
@@ -10,37 +9,7 @@ interface ImagesData {
 }
 
 const ImageCarousel = () => {
-  const [images, setImages] = useState<Array<ImagesData>>([])
-
-  useEffect(() => {
-    fillCarousel();
-  }, [])
-
-
-  const fillCarousel = async () => {
-    try {
-      const url: string = "http://localhost:3001/api/v1/images";
-      const response: AxiosResponse = await axios.get(url);
-      const data = response.data;
-      console.log(data)
-      // const carousel: ImagesData[] = []; 
-      // data.map((entry: ImagesData)=>{
-      //   console.log(entry)
-      //   // handleImageSet(entry)
-      //   // setImages([...images, entry])
-      //   carousel.push(entry)
-      //   console.log('fillCarousel: ',images)
-      // })
-      setImages(data)
-
-    } catch (error) {
-      console.error('Error Storing to the Database:', error);
-    }
-  };
-
-  // const handleImageSet = (entry:ImagesData) => {
-  //   setImages([...images, entry])
-  // }
+  const { images} : { images:ImagesData[] } = useOutletContext();
 
   console.log('After-Carousel: ', images)
 
@@ -68,7 +37,7 @@ const ImageCarousel = () => {
       <h2>View Your Collection</h2>
 
       {/* ternary to display either a <Carousel> (if there are images) or an error message */}
-      {images.length > 0
+      {images && images.length > 0
         ?
         (
           <Carousel>{imagesCollection}</Carousel>
