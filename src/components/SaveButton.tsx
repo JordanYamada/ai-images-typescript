@@ -24,7 +24,8 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
 
   const { getImages }: OutletContext = useOutletContext() as OutletContext;
 
-  const handleConvert = async () => {
+  const handleConvert = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
     console.log(props.title)
     try {
       const url: string = "http://localhost:3001/api/v1/saveImage";

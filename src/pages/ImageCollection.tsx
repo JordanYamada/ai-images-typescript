@@ -14,7 +14,7 @@ interface ImagesData {
 // Define the type of the context value returned by useOutletContext
 interface OutletContext {
   images: ImagesData[];
-  deleteImage: (url: string, id: string) => void;
+  deleteImage: (url: string, id: string) => Promise<void>;
   getImages: () => void;
 }
 
@@ -22,8 +22,9 @@ const ImageCollection = () => {
   // Use the defined type for context value
   const { images, deleteImage, getImages }: OutletContext = useOutletContext() as OutletContext;
 
-  const handleDeleteImage = (url:string, id:string) => {
-    deleteImage(url, id)
+  const handleDeleteImage = async (id:string) => {
+    const url: string = "http://localhost:3001/api/v1/images/";
+    await deleteImage(url, id)
     getImages();
   }
 
@@ -32,7 +33,7 @@ const ImageCollection = () => {
 
 
   const imagesCollection = images.map(image => {
-    const url: string = "http://localhost:3001/api/v1/images/";
+    // const url: string = "http://localhost:3001/api/v1/images/";
     return(
     
     // console.log('Single Image!!!:',image)
@@ -49,7 +50,7 @@ const ImageCollection = () => {
        </Card.Text>
        <Button
               variant="dark"
-              onClick={() => handleDeleteImage(url, image._id)}
+              onClick={()=>handleDeleteImage(image._id)}
             >
               Delete Image
             </Button>
