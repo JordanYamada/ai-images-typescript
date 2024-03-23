@@ -24,7 +24,7 @@ const App: React.FC = () => {
 
   const getImages = async () => {
     try {
-      const url: string = "http://localhost:3001/api/v1/images";
+      const url: string = `${process.env.REACT_APP_SERVER}api/v1/images`;
       const response: AxiosResponse = await axios.get(url);
       const data = response.data;
       console.log(data)

@@ -23,7 +23,7 @@ const ImageCollection = () => {
   const { images, deleteImage, getImages }: OutletContext = useOutletContext() as OutletContext;
 
   const handleDeleteImage = async (id:string) => {
-    const url: string = "http://localhost:3001/api/v1/images/";
+    const url: string = `${process.env.REACT_APP_SERVER}api/v1/images/`;
     await deleteImage(url, id)
     getImages();
   }
