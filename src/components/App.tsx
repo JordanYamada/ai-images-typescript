@@ -13,25 +13,27 @@ interface ImagesData {
   _id: string;
 }
 
+
 const App: React.FC = () => {
   const [images, setImages] = useState<Array<ImagesData>>([])
 
 
   useEffect(() => {
+    console.log(import.meta.env.VITE_REACT_APP_SERVER)
     getImages();
   }, [])
 
 
   const getImages = async () => {
     try {
-      const url: string = `${process.env.REACT_APP_SERVER}api/v1/images`;
+      const url: string = `${import.meta.env.VITE_REACT_APP_SERVER}api/v1/images`;
       const response: AxiosResponse = await axios.get(url);
       const data = response.data;
       console.log(data)
       setImages(data)
 
     } catch (error) {
-      console.error('Error Storing to the Database:', error);
+      console.error('Error getting images from the Database:', error);
     }
   };
 

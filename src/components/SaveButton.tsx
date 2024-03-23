@@ -28,7 +28,7 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
     event.preventDefault();
     console.log(props.title)
     try {
-      const url: string = `${process.env.REACT_APP_SERVER}api/v1/saveImage`;
+      const url: string = `${import.meta.env.VITE_REACT_APP_SERVER}api/v1/saveImage`;
       const response: AxiosResponse = await axios.post(url, { params: { image: props.image } });
 
 
@@ -47,7 +47,7 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
 
   const addToCarousel = async (image: string) => {
     try {
-      const url: string = `${process.env.REACT_APP_SERVER}api/v1/images`;
+      const url: string = `${import.meta.env.VITE_REACT_APP_SERVER}api/v1/images`;
       const response: AxiosResponse = await axios.post(url, { title: props.title, description: props.description, image: image });
 
 
