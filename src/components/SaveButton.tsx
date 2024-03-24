@@ -52,7 +52,7 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
 
 
       const data = response.data;
-      console.log(data)
+      alert(`Your new image, ${data.title}, has been saved`);
 
 
     } catch (error) {
