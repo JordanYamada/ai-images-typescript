@@ -36,7 +36,6 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
 
       // Call the saveImage function with the converted image URL
       props.saveImage(imageUrl);
-      console.log(props.title)
       addToCarousel(imageUrl)
       getImages();
 

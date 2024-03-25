@@ -25,9 +25,7 @@ const Home: React.FC = () => {
   const aiImage = async (formData: FormData) => {
     try {
       const url: string = `${import.meta.env.VITE_REACT_APP_SERVER}api/v1/dallE`;
-      console.log(url);
       const { title, description } = formData;
-      console.log(formData);
       const response: AxiosResponse = await axios.post(url, {
         title,
         description

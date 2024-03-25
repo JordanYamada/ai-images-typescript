@@ -29,7 +29,6 @@ const App: React.FC = () => {
       const url: string = `${import.meta.env.VITE_REACT_APP_SERVER}api/v1/images`;
       const response: AxiosResponse = await axios.get(url);
       const data = response.data;
-      console.log(data)
       setImages(data)
 
     } catch (error) {
