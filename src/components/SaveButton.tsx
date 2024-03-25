@@ -32,7 +32,7 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
       console.log({ image: props.image },'| URL:', url )
       const response: AxiosResponse = await axios.post(url, { image: props.image });
 
-
+      console.log('DATAAAA:', response.data)
       const imageUrl = response.data.url;
 
       // Call the saveImage function with the converted image URL
