@@ -29,6 +29,7 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
     console.log(props.title)
     try {
       const url: string = `${import.meta.env.VITE_REACT_APP_SERVER}api/v1/saveImage`;
+      console.log({ image: props.image },'| URL:', url )
       const response: AxiosResponse = await axios.post(url, { image: props.image });
 
 
