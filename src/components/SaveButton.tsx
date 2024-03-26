@@ -26,13 +26,13 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
 
   const handleConvert = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event.preventDefault();
-    console.log(props.title)
+    console.log('TITLE: ', props.title, 'DESC: ', props.description)
     try {
       const url: string = `${import.meta.env.VITE_REACT_APP_SERVER}api/v1/saveImage`;
-      console.log({ image: props.image },'| URL:', url )
+      // console.log({ image: props.image },'| URL:', url )
       const response: AxiosResponse = await axios.post(url, { image: props.image });
 
-      console.log('DATAAAA:', response.data)
+      // console.log('DATAAAA:', response.data)
       const imageUrl = response.data.url;
 
       // Call the saveImage function with the converted image URL
@@ -48,6 +48,8 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
   const addToCarousel = async (image: string) => {
     try {
       const url: string = `${import.meta.env.VITE_REACT_APP_SERVER}api/v1/images`;
+      console.log('URL!!!!!: ', url)
+      console.log('TITLE: ', props.title, 'DESC: ', props.description)
       const response: AxiosResponse = await axios.post(url, { title: props.title, description: props.description, image: image });
 
 
