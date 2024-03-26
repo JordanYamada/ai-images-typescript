@@ -38,7 +38,7 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
       // Call the saveImage function with the converted image URL
       props.saveImage(imageUrl);
       addToCarousel(imageUrl)
-      getImages();
+      // getImages();
 
     } catch (error) {
       console.error('Error converting image:', error);
@@ -51,6 +51,7 @@ const SaveButton: React.FC<SaveButtonProps> = (props) => {
       console.log('URL!!!!!: ', url)
       console.log('TITLE: ', props.title, 'DESC: ', props.description)
       const response: AxiosResponse = await axios.post(url, { title: props.title, description: props.description, image: image });
+      getImages();
 
 
       const data = response.data;
