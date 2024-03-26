@@ -33,7 +33,7 @@ const Home: React.FC = () => {
 
       const image: string = response.data.url;
       const prompt: string = response.data.description;
-      // console.log('Response: ', response.data)
+      console.log('Response: ', response.data)
       // console.log('MY image:',image);
       // console.log('MY prompt:',prompt);
       setImage(image);
